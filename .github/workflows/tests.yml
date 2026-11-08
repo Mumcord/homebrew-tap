@@ -4,6 +4,11 @@ on:
   push:
   pull_request:
 
+# Online audits ask the GitHub API about the release; unauthenticated calls from shared runners
+# hit the rate limit.
+env:
+  HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
+
 jobs:
   cask:
     runs-on: macos-latest
