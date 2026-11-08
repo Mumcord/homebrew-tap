@@ -13,7 +13,8 @@ sums=$(gh release download "${tag}" --repo "${repo}" --pattern SHA256SUMS --outp
 sum() {
   local hash
   hash=$(awk -v f="$1" '$2 == f { print $1 }' <<<"${sums}")
-  if [[ -z "${hash}" ]]; then
+  if [[ -z "${hash}" ]]
+  then
     echo "SHA256SUMS of ${tag} has no $1" >&2
     exit 1
   fi
