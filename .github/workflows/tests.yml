@@ -1,0 +1,35 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  cask:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tap this checkout
+        run: |
+          mkdir -p "$(brew --repository)/Library/Taps/mumcord"
+          ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/mumcord/homebrew-tap"
+      - run: brew style mumcord/tap
+      - run: brew audit --cask --strict --online mumcord/tap/mumcord
+      - name: Install and uninstall
+        run: |
+          brew install --cask mumcord/tap/mumcord
+          test -d /Applications/Mumcord.app
+          brew uninstall --cask --zap mumcord
+
+  formula:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Tap this checkout
+        run: |
+          mkdir -p "$(brew --repository)/Library/Taps/mumcord"
+          ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/mumcord/homebrew-tap"
+      - run: brew audit --formula --strict --online mumcord/tap/mumcord
+      - run: brew install mumcord/tap/mumcord
+      - run: brew test mumcord/tap/mumcord
