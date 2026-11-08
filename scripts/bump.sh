@@ -28,7 +28,8 @@ sed -i \
   -e "s/^  version \".*\"$/  version \"${version}\"/" \
   -e "s/^  sha256 \".*\"$/  sha256 \"${dmg}\"/" \
   Casks/mumcord.rb
-sed -i -e "s/^  version \".*\"$/  version \"${version}\"/" Formula/mumcord.rb
+# The formula names the version only in its URLs (Homebrew reads it from there).
+sed -i -e "s/${current//./\\.}/${version}/g" Formula/mumcord.rb
 # The first sha256 in the formula is the Intel AppImage, the second the ARM one.
 awk -v a="${amd64}" -v b="${arm64}" '
   /^      sha256 "/ { n++; sub(/"[0-9a-f]+"/, "\"" (n == 1 ? a : b) "\"") }

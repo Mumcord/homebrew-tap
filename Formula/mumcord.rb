@@ -1,7 +1,6 @@
 class Mumcord < Formula
   desc "Voice chat client for Mumble servers"
   homepage "https://mumcord.app/"
-  version "0.7.2"
   license "AGPL-3.0-only"
 
   livecheck do
@@ -9,18 +8,18 @@ class Mumcord < Formula
     strategy :github_latest
   end
 
+  depends_on :linux
+
   on_linux do
     on_intel do
-      url "https://github.com/Mumcord/mumcord/releases/download/v#{version}/Mumcord_#{version}_amd64.AppImage"
+      url "https://github.com/Mumcord/mumcord/releases/download/v0.7.2/Mumcord_0.7.2_amd64.AppImage"
       sha256 "11264b94db8957b6333ea00495c3b71d2b9fa164c6db31995c8af7ac76dbe0ca"
     end
     on_arm do
-      url "https://github.com/Mumcord/mumcord/releases/download/v#{version}/Mumcord_#{version}_aarch64.AppImage"
+      url "https://github.com/Mumcord/mumcord/releases/download/v0.7.2/Mumcord_0.7.2_aarch64.AppImage"
       sha256 "70be74891689100a57d1c4c935d47c5b90f968efb871a35cfa5fb22a99f9adde"
     end
   end
-
-  depends_on :linux
 
   def install
     appimage = Dir["*.AppImage"].first
