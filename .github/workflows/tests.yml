@@ -13,6 +13,7 @@ jobs:
         run: |
           mkdir -p "$(brew --repository)/Library/Taps/mumcord"
           ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/mumcord/homebrew-tap"
+          brew trust mumcord/tap
       - run: brew style mumcord/tap
       - run: brew audit --cask --strict --online mumcord/tap/mumcord
       - name: Install and uninstall
@@ -30,6 +31,7 @@ jobs:
         run: |
           mkdir -p "$(brew --repository)/Library/Taps/mumcord"
           ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/mumcord/homebrew-tap"
+          brew trust mumcord/tap
       - run: brew audit --formula --strict --online mumcord/tap/mumcord
       - run: brew install mumcord/tap/mumcord
       - run: brew test mumcord/tap/mumcord
