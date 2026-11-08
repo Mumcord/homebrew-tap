@@ -4,6 +4,11 @@ class Mumcord < Formula
   version "0.7.2"
   license "AGPL-3.0-only"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   on_linux do
     on_intel do
       url "https://github.com/Mumcord/mumcord/releases/download/v#{version}/Mumcord_#{version}_amd64.AppImage"
@@ -13,11 +18,6 @@ class Mumcord < Formula
       url "https://github.com/Mumcord/mumcord/releases/download/v#{version}/Mumcord_#{version}_aarch64.AppImage"
       sha256 "70be74891689100a57d1c4c935d47c5b90f968efb871a35cfa5fb22a99f9adde"
     end
-  end
-
-  livecheck do
-    url :stable
-    strategy :github_latest
   end
 
   depends_on :linux
