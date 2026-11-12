@@ -1,8 +1,11 @@
 cask "mumcord" do
-  version "0.7.2"
-  sha256 "eeb5d16e896a1565b1434afdacfd77d79d7f340b5b867e6ac3099381883838af"
+  arch arm: "aarch64", intel: "x64"
 
-  url "https://github.com/Mumcord/mumcord/releases/download/v#{version}/Mumcord_#{version}_universal.dmg",
+  version "0.8.0"
+  sha256 arm:   "1cf51fce9e3c1296610550a2d8319c579ff8655a1c4ee7dbbee0c881240382f4",
+         intel: "b81f20c03f2e484ae00423c89564a5805bbd2acccccc7adbd2029454684a8158"
+
+  url "https://github.com/Mumcord/mumcord/releases/download/v#{version}/Mumcord_#{version}_#{arch}.dmg",
       verified: "github.com/Mumcord/mumcord/"
   name "Mumcord"
   desc "Voice chat client for Mumble servers"

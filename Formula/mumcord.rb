@@ -12,12 +12,12 @@ class Mumcord < Formula
 
   on_linux do
     on_intel do
-      url "https://github.com/Mumcord/mumcord/releases/download/v0.7.2/Mumcord_0.7.2_amd64.AppImage"
-      sha256 "11264b94db8957b6333ea00495c3b71d2b9fa164c6db31995c8af7ac76dbe0ca"
+      url "https://github.com/Mumcord/mumcord/releases/download/v0.8.0/Mumcord_0.8.0_amd64.AppImage"
+      sha256 "19b62479176bc6a76738e952fa3bd09c2fe8c106ff8f30851c1d6219fac9f745"
     end
     on_arm do
-      url "https://github.com/Mumcord/mumcord/releases/download/v0.7.2/Mumcord_0.7.2_aarch64.AppImage"
-      sha256 "70be74891689100a57d1c4c935d47c5b90f968efb871a35cfa5fb22a99f9adde"
+      url "https://github.com/Mumcord/mumcord/releases/download/v0.8.0/Mumcord_0.8.0_aarch64.AppImage"
+      sha256 "f3d39b41595c8edc17a5c2af72cdb96799b978fb8dc7ab8d701f7cba64a2f281"
     end
   end
 
